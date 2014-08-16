@@ -1,0 +1,16 @@
+ab -n 10000 -c 10 -g test_data_1.txt http://162.243.110.118:5000/envio_xml
+
+#onde n=numero de requisições
+# c=transações concorrentes
+
+#Gerar gráfico do teste.
+gnuplot
+set terminal png
+set output "ApacheBenchmarkResults.png"
+set title "Benchmark from Server X"
+set size 1,0.5
+set key left top
+set xlabel 'request'
+set ylabel 'ms'
+plot "test_data_1.txt" using 10 with lines title 'Benchmark from Server X'
+exit
