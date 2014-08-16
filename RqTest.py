@@ -9,7 +9,7 @@ from os.path import isfile, join
 import requests
 
 if __name__ == '__main__':
-    diretorio = '/home/danimar/Documents/xml/protocolada/'
+    diretorio = './xmls_teste/'
     onlyfiles = [ join(diretorio,f) for f in listdir(diretorio) if isfile(join(diretorio,f)) ]
     for i in range(0,100):
         for item in onlyfiles:
