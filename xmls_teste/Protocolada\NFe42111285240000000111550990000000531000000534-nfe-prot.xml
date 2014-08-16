@@ -1,0 +1,176 @@
+<?xml version="1.0"?>
+<nfeProc versao="2.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <NFe>
+    <infNFe Id="NFe42111285240000000111550990000000531000000534" versao="2.00">
+      <ide>
+        <cUF>42</cUF>
+        <cNF>00000053</cNF>
+        <natOp>VENDA DE MERCADORIA FORA DO ESTADO</natOp>
+        <indPag>0</indPag>
+        <mod>55</mod>
+        <serie>99</serie>
+        <nNF>53</nNF>
+        <dEmi>2011-12-29</dEmi>
+        <tpNF>1</tpNF>
+        <cMunFG>4204202</cMunFG>
+        <tpImp>1</tpImp>
+        <tpEmis>1</tpEmis>
+        <cDV>4</cDV>
+        <tpAmb>2</tpAmb>
+        <finNFe>1</finNFe>
+        <procEmi>0</procEmi>
+        <verProc>2.00</verProc>
+      </ide>
+      <emit>
+        <CNPJ>85240000000111</CNPJ>
+        <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+        <xFant>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xFant>
+        <enderEmit>
+          <xLgr>João Paulo I</xLgr>
+          <nro>22</nro>
+          <xCpl>Nenhum</xCpl>
+          <xBairro>Santa Maria</xBairro>
+          <cMun>4204202</cMun>
+          <xMun>4204202</xMun>
+          <UF>SC</UF>
+          <CEP>89812510</CEP>
+          <cPais>1058</cPais>
+          <fone>48999999</fone>
+        </enderEmit>
+        <IE>254273424</IE>
+        <CRT>3</CRT>
+      </emit>
+      <dest>
+        <CNPJ>81306607000104</CNPJ>
+        <xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+        <enderDest>
+          <xLgr>Getúlio Dorneles Vargas - N</xLgr>
+          <nro>210</nro>
+          <xCpl>sala</xCpl>
+          <xBairro>Getúlio Dorneles Vargas - N</xBairro>
+          <cMun>4204202</cMun>
+          <xMun>Chapeco</xMun>
+          <UF>SC</UF>
+          <CEP>89801000</CEP>
+          <cPais>1058</cPais>
+          <xPais>1058</xPais>
+          <fone>4984014019</fone>
+        </enderDest>
+        <IE>ISENTO</IE>
+        <email>lorenci@lorenci.com.br</email>
+      </dest>
+      <det nItem="1">
+        <prod>
+          <cProd>52</cProd>
+          <cEAN />
+          <xProd>ADAP P/ENG 1/2 E ROS M 1/2-1/4G - 200</xProd>
+          <NCM>84812019</NCM>
+          <CFOP>5405</CFOP>
+          <uCom>JG</uCom>
+          <qCom>10.00</qCom>
+          <vUnCom>14.00</vUnCom>
+          <vProd>140.00</vProd>
+          <cEANTrib />
+          <uTrib>0.00</uTrib>
+          <qTrib>10.00</qTrib>
+          <vUnTrib>14.00</vUnTrib>
+          <indTot>1</indTot>
+        </prod>
+        <imposto>
+          <ICMS>
+            <ICMS00>
+              <orig>0</orig>
+              <CST>00</CST>
+              <modBC>3</modBC>
+              <vBC>140.00</vBC>
+              <pICMS>17.00</pICMS>
+              <vICMS>23.80</vICMS>
+            </ICMS00>
+          </ICMS>
+          <PIS>
+            <PISAliq>
+              <CST>01</CST>
+              <vBC>140.00</vBC>
+              <pPIS>1.00</pPIS>
+              <vPIS>1.40</vPIS>
+            </PISAliq>
+          </PIS>
+          <COFINS>
+            <COFINSAliq>
+              <CST>01</CST>
+              <vBC>140.00</vBC>
+              <pCOFINS>2.00</pCOFINS>
+              <vCOFINS>2.80</vCOFINS>
+            </COFINSAliq>
+          </COFINS>
+        </imposto>
+      </det>
+      <total>
+        <ICMSTot>
+          <vBC>140.00</vBC>
+          <vICMS>23.80</vICMS>
+          <vBCST>0.00</vBCST>
+          <vST>0.00</vST>
+          <vProd>140.00</vProd>
+          <vFrete>0.00</vFrete>
+          <vSeg>0.00</vSeg>
+          <vDesc>0.00</vDesc>
+          <vII>0.00</vII>
+          <vIPI>0.00</vIPI>
+          <vPIS>1.40</vPIS>
+          <vCOFINS>2.80</vCOFINS>
+          <vOutro>0.00</vOutro>
+          <vNF>140.00</vNF>
+        </ICMSTot>
+      </total>
+      <transp>
+        <modFrete>9</modFrete>
+      </transp>
+      <cobr>
+        <dup>
+          <nDup>53</nDup>
+          <dVenc>2011-12-29</dVenc>
+          <vDup>70.00</vDup>
+        </dup>
+        <dup>
+          <nDup>53</nDup>
+          <dVenc>2012-01-28</dVenc>
+          <vDup>70.00</vDup>
+        </dup>
+      </cobr>
+      <infAdic />
+    </infNFe>
+    <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+      <SignedInfo>
+        <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+        <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+        <Reference URI="#NFe42111285240000000111550990000000531000000534">
+          <Transforms>
+            <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+            <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+          </Transforms>
+          <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+          <DigestValue>a0jCghcrqcM+PIBDfN6NYoL93lI=</DigestValue>
+        </Reference>
+      </SignedInfo>
+      <SignatureValue>TVx7I0wgjAyDpzivqnSWjG//5tiN0gvjkm5h4nT6CJu26f0qInxOcOK9rxSdLry2NayuoSh0cOFAqM2+5SYjkmMlEdOw0OkWXCNTroZ2Ywo8qsCr2bAMk7JxB1tyvmdW3uERJhIRFb18Xdp44IBKg7oYhPuNqvX6d2SD5xOYoZg=</SignatureValue>
+      <KeyInfo>
+        <X509Data>
+          <X509Certificate>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</X509Certificate>
+        </X509Data>
+      </KeyInfo>
+    </Signature>
+  </NFe>
+  <protNFe versao="2.00">
+    <infProt Id="ID342110002014737">
+      <tpAmb>2</tpAmb>
+      <verAplic>SVRS20111219142047</verAplic>
+      <chNFe>42111285240000000111550990000000531000000534</chNFe>
+      <dhRecbto>2011-12-29T11:50:29</dhRecbto>
+      <nProt>342110002014737</nProt>
+      <digVal>a0jCghcrqcM+PIBDfN6NYoL93lI=</digVal>
+      <cStat>100</cStat>
+      <xMotivo>Autorizado o uso da NF-e</xMotivo>
+    </infProt>
+  </protNFe>
+</nfeProc>
