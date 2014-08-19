@@ -13,7 +13,9 @@ NUMERO = lambda x:float(x)
 DATA_HORA = lambda x: datetime.strptime(x, 'AAAA-MM-DDThh:mm:ssTZD')
 DATA = lambda x: datetime.strptime(x, '%Y-%m-%d')
 
-CONVERSOES = {"cUF": INTEIRO, "vNF":NUMERO, "dEmi": DATA }
+CONVERSOES = {"cUF": INTEIRO, "vNF":NUMERO, "dEmi": DATA,
+              "vBC":NUMERO, "vICMS":NUMERO, "vBCST":NUMERO, "vST":NUMERO, "vProd":NUMERO, "vFrete":NUMERO,
+              "vSeg":NUMERO, "vDesc":NUMERO, "vII":NUMERO, "vIPI":NUMERO, "vPIS":NUMERO, "vCOFINS":NUMERO, "vOutro":NUMERO }
 
 def postprocessor(path, key, value):
     try:

@@ -12,7 +12,7 @@ from processa_nfe import processar_xml
 
 BROKER_URL = 'amqp://guest:guest@localhost:5672//'
 
-app = Flask(__name__)
+app = Flask(__name__, instance_path=r'C:\Projetos\drunken-octo-sansa\\')
 #redis_conn = Redis()
 #q = Queue(connection=redis_conn)
 auth = HTTPBasicAuth()
@@ -21,6 +21,7 @@ auth = HTTPBasicAuth()
 #@auth.login_required
 def envio_xml():
     xml = request.data
+    print(xml)
     job = processar_xml.delay(xml, request.remote_addr)
     return jsonify( { 'id': job.id, 'codigo':'10', 'resposta':  'Xml recebido com sucesso' } )
 

@@ -2,3 +2,24 @@ rqworker - inicia os workers do pyhon-rq
 rq-dashboard - inicia interface de administraçao do python-rq
 /usr/share/redis-desktop-manager/bin/rdm  -Inicia a interface do redis
 sudo redis-server - inicia o redis
+
+//Pesquisa valor da NF por cnpj
+db.notas_fiscais.aggregate([{"$group":{"_id": "$nfeProc.NFe.infNFe.dest.CNPJ",
+        "total":{"$sum": "$nfeProc.NFe.infNFe.total.ICMSTot.vNF" }}}])
+
+
+//Pesquisa valor da NF por dia
+{
+    "$group":{
+        "_id": "$nfeProc.NFe.infNFe.ide.dEmi",
+        "total":{"$sum": "$nfeProc.NFe.infNFe.total.ICMSTot.vNF" }
+    }
+}
+
+
+db.notas_fiscais.find({}).forEach(function(doc) {
+    var d = { _id : doc._id };
+    var s = { $set:{ "nfeProc.NFe.infNFe.total.ICMSTot.vNF" : doc.nfeProc.NFe.infNFe.total.ICMSTot.vNF} };
+    db.notas_fiscais.update(d, s);
+    print(d._id);
+})
