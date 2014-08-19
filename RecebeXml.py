@@ -21,7 +21,7 @@ auth = HTTPBasicAuth()
 #@auth.login_required
 def envio_xml():
     xml = request.data
-    job = processar_xml.delay(xml, request.remote_addr)    
+    job = processar_xml.delay(xml, request.remote_addr)
     return jsonify( { 'id': job.id, 'codigo':'10', 'resposta':  'Xml recebido com sucesso' } )
 
 @app.errorhandler(404)

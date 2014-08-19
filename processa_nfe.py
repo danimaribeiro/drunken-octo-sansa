@@ -12,9 +12,10 @@ app = Celery('processa_nfe', broker=BROKER_URL)
 
 @app.task
 def processar_xml(xml, ip):
-    nota = xmltodict.parse(xml) 
+    nota = xmltodict.parse(xml)
     client = MongoClient('localhost', 27017)
-    db = client.metrics    
+    db = client.metrics
     notas_fiscais = db.notas_fiscais
     notas_fiscais.insert(nota)
     return 1
+
