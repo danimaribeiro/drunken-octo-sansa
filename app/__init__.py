@@ -1,13 +1,22 @@
 # Import flask and template operators
 from flask import Flask, render_template
 from flask.ext.pymongo import PyMongo
+from flask.ext.login import LoginManager
+
 
 # Define the WSGI application object
 app = Flask(__name__)
-mongo = PyMongo(app)
+app.config['metrics_DBNAME'] = 'metrics'
+mongo = PyMongo(app, config_prefix='metrics')
+login_manager = LoginManager()
+login_manager.init_app(app)
 
 # Configurations
 app.config.from_object('config')
+
+@login_manager.user_loader
+def load_user(userid):
+    return mongo.db.users.find_one({ "_id": userid })
 
 # Sample HTTP error handling
 @app.errorhandler(404)

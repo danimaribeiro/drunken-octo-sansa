@@ -2,7 +2,7 @@
 <html class="bg-black">
     <head>
         <meta charset="UTF-8">
-        <title>AdminLTE | Registration Page</title>
+        <title>AdminLTE | Log in</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <!-- bootstrap 3.0.2 -->
         <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
@@ -21,35 +21,22 @@
     <body class="bg-black">
 
         <div class="form-box" id="login-box">
-            <div class="header">Metrics - Crie sua conta</div>
-            <form action="{{ url_for('auth.signin') }}" role="form" method="post">
+            <div class="header">Metrics - Recuperar senha</div>
+           <form role="form" action="{{ url_for('auth.login') }}" method="post">
                 <div class="body bg-gray">
                     {{ form.csrf_token }}
-                    <div class="form-group">
-                        {{ form.nome(class_="form-control", placeholder="Nome") }}
-                         {{ form.nome.process_errors }}
-                    </div>
+
                     <div class="form-group">
                         {{ form.email(class_="form-control", placeholder="E-mail") }}
-                         {{ form.email.errors }}
-                    </div>
-                    <div class="form-group">
-                        {{ form.senha(class_="form-control", placeholder="Senha") }}
-                     {{ form.senha.errors }}
-                    </div>
-                    <div class="form-group">
-                        {{ form.confirmacao(class_="form-control", placeholder="Confirmação de senha") }}
-                        {{ form.confirmacao.errors }}
                     </div>
                 </div>
                 <div class="footer">
-                    <button type="submit" class="btn bg-olive btn-block">Registrar-se</button>
-                    <a href="{{ url_for('auth.login') }}" class="text-center">Eu já sou cadastrado</a>
+                    <button type="submit" class="btn bg-olive btn-block">Enviar link de recuperação</button>
+                     <a href="{{ url_for('auth.login') }}" class="text-center">Voltar ao login</a>
                 </div>
             </form>
-
             <div class="margin text-center">
-                <span>Register using social networks</span>
+                <span>Sign in using social networks</span>
                 <br/>
                 <button class="btn bg-light-blue btn-circle"><i class="fa fa-facebook"></i></button>
                 <button class="btn bg-aqua btn-circle"><i class="fa fa-twitter"></i></button>
@@ -57,7 +44,6 @@
 
             </div>
         </div>
-
 
         <!-- jQuery 2.0.2 -->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>

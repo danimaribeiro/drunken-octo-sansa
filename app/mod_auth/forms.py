@@ -1,3 +1,4 @@
+#coding=utf-8
 '''
 Created on 19/08/2014
 
@@ -15,8 +16,22 @@ from wtforms.validators import Required, Email, EqualTo
 
 # Define the login form (WTForms)
 
+class RecuperarSenhaForm(Form):
+    email  = TextField('Endereço de e-mail', [Email(),
+                Required(message='Digite seu e-mail!')])
+
 class LoginForm(Form):
     email    = TextField('Email Address', [Email(),
                 Required(message='Forgot your email address?')])
     password = PasswordField('Password', [
+                Required(message='Must provide a password. ;-)')])
+
+class RegistroForm(Form):
+    nome    = TextField('Email Address', [
+                 Required(message='Forgot your email address?')])
+    email    = TextField('Email Address', [Email(),
+                Required(message='Forgot your email address?')])
+    senha = PasswordField('Senha', [
+                Required(message='Must provide a password. ;-)')])
+    confirmacao = PasswordField('Confirmação', [
                 Required(message='Must provide a password. ;-)')])

@@ -1,7 +1,10 @@
 eclipse.preferences.version=1
 encoding//app/controllers/main.py=utf-8
+encoding//app/mod_auth/forms.py=utf-8
 encoding//app/serviceapi/controllers.py=utf-8
 encoding//app/templates/404.html=UTF-8
+encoding//app/templates/auth/recuperar.html=UTF-8
+encoding//app/templates/auth/signin.html=UTF-8
 encoding//app/templates/empty.html=UTF-8
 encoding//docs/conf.py=utf-8
 encoding/RecebeXml.py=utf-8

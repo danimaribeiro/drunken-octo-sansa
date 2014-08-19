@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from flask import Blueprint, render_template, flash, request, redirect, url_for
-from flask.ext.login import login_user, logout_user, login_required
+from flask.ext.login import login_required
+from flask.ext.httpauth import HTTPBasicAuth
 
 #from appname import cache
 #from appname.forms import LoginForm
@@ -8,30 +9,10 @@ from flask.ext.login import login_user, logout_user, login_required
 
 main = Blueprint('main', __name__)
 
-
 @main.route('/')
 #@cache.cached(timeout=1000)
 def home():
     return render_template('empty.html')
-
-
-@main.route("/login", methods=["GET", "POST"])
-def login():
-    form = LoginForm()
-    if form.validate_on_submit():
-        # For demonstration purposes the password in stored insecurely
-        user = User.query.filter_by(username=form.username.data,
-                                    password=form.password.data).first()
-
-        if user:
-            login_user(user)
-
-            flash("Logged in successfully.", "success")
-            return redirect(request.args.get("next") or url_for(".home"))
-        else:
-            flash("Login failed.", "danger")
-
-    return render_template("login.html", form=form)
 
 
 @main.route("/logout")
