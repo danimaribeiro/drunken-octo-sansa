@@ -31,8 +31,9 @@ def server_error(error):
 # Import a module / component using its blueprint handler variable (mod_auth)
 from app.mod_auth.controllers import mod_auth as auth_module
 from app.controllers.main import main
-
+from app.mapas.controllers import mapa
 
 # Register blueprint(s)
 app.register_blueprint(auth_module)
 app.register_blueprint(main)
+app.register_blueprint(mapa)
