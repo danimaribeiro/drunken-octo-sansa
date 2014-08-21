@@ -1,25 +1,244 @@
-{% extends "base.html" %}
+{% extends "empty.html" %}
 
 {% block title %}Home{% endblock %}
 
-{% block body %}
-    <div class="jumbotron">
-        <h1>Flask Foundation</h1>
-        <p>The unopinionated flask framework</p>
-    </div>
+{% block scripts %}
+    <script src="http://trifacta.github.io/vega/lib/d3.v3.min.js"></script>
+    <script src="http://trifacta.github.io/vega/vega.js"></script>
 
-    <div class="row">
-        <div class="col-md-4">
-            <h3>Bootstrap</h3>
-            <p>Bootstrap is the most popular css framework on the internet and handles the hard parts of css so you don't have to.</p>
-        </div>
-        <div class="col-md-4">
-            <h3>Flask Extensions</h3>
-            <p>Several flask extensions are included to handle the common tasks of web developers. The included extensions are flask-login, flask-assets, flask-WTF, flask-cache, flask-script, and flask-sqlalchemy.</p>
-        </div>
-        <div class="col-md-4">
-            <h3>Management Scripts</h3>
-            <p>Using the Makefile, you can easily setup your development environment with a few simple commands. With the power of flask-script you can create your own commands with the flask app context setup for you.</p>
-        </div>
-    </div>
+  <script type="text/javascript">
+        function parse(spec, id) {
+          vg.parse.spec(spec, function(chart) { chart({el:id}).update(); });
+        }
+        $(document).ready(function(){
+            $.post("{{ url_for('graficos.api_vendas') }}", {}, function(data){
+                data = jQuery.parseJSON(data);
+                parse(data, '#revenue-chart');
+            });
+             $.post("{{ url_for('graficos.api_vendas_dia') }}", {}, function(data){
+                data = jQuery.parseJSON(data);
+                parse(data, '#line-chart');
+            });
+        });
+  </script>
+{% endblock %}
+
+{% block body %}
+
+<!-- Right side column. Contains the navbar and content of the page -->
+ <aside class="right-side">
+     <!-- Content Header (Page header) -->
+     <section class="content-header">
+         <h1>
+             Dashboard
+             <small>Control panel</small>
+         </h1>
+         <ol class="breadcrumb">
+             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+             <li class="active">Dashboard</li>
+         </ol>
+     </section>
+
+     <!-- Main content -->
+     <section class="content">
+
+         <!-- Small boxes (Stat box) -->
+         <div class="row">
+             <div class="col-lg-3 col-xs-6">
+                 <!-- small box -->
+                 <div class="small-box bg-aqua">
+                     <div class="inner">
+                         <h3>
+                             150
+                         </h3>
+                         <p>
+                             New Orders
+                         </p>
+                     </div>
+                     <div class="icon">
+                         <i class="ion ion-bag"></i>
+                     </div>
+                     <a href="#" class="small-box-footer">
+                         More info <i class="fa fa-arrow-circle-right"></i>
+                     </a>
+                 </div>
+             </div><!-- ./col -->
+             <div class="col-lg-3 col-xs-6">
+                 <!-- small box -->
+                 <div class="small-box bg-green">
+                     <div class="inner">
+                         <h3>
+                             53<sup style="font-size: 20px">%</sup>
+                         </h3>
+                         <p>
+                             Bounce Rate
+                         </p>
+                     </div>
+                     <div class="icon">
+                         <i class="ion ion-stats-bars"></i>
+                     </div>
+                     <a href="#" class="small-box-footer">
+                         More info <i class="fa fa-arrow-circle-right"></i>
+                     </a>
+                 </div>
+             </div><!-- ./col -->
+             <div class="col-lg-3 col-xs-6">
+                 <!-- small box -->
+                 <div class="small-box bg-yellow">
+                     <div class="inner">
+                         <h3>
+                             44
+                         </h3>
+                         <p>
+                             User Registrations
+                         </p>
+                     </div>
+                     <div class="icon">
+                         <i class="ion ion-person-add"></i>
+                     </div>
+                     <a href="#" class="small-box-footer">
+                         More info <i class="fa fa-arrow-circle-right"></i>
+                     </a>
+                 </div>
+             </div><!-- ./col -->
+             <div class="col-lg-3 col-xs-6">
+                 <!-- small box -->
+                 <div class="small-box bg-red">
+                     <div class="inner">
+                         <h3>
+                             65
+                         </h3>
+                         <p>
+                             Unique Visitors
+                         </p>
+                     </div>
+                     <div class="icon">
+                         <i class="ion ion-pie-graph"></i>
+                     </div>
+                     <a href="#" class="small-box-footer">
+                         More info <i class="fa fa-arrow-circle-right"></i>
+                     </a>
+                 </div>
+             </div><!-- ./col -->
+         </div><!-- /.row -->
+
+         <!-- Main row -->
+         <div class="row">
+             <!-- Left col -->
+             <section class="col-lg-7 connectedSortable">
+
+                 <!-- Custom tabs (Charts with tabs)-->
+                 <div class="nav-tabs-custom">
+                     <!-- Tabs within a box -->
+                     <ul class="nav nav-tabs pull-right">
+                         <li class="active"><a href="#revenue-chart" data-toggle="tab">Area</a></li>
+                         <li class="pull-left header"><i class="fa fa-inbox"></i> Sales</li>
+                     </ul>
+                     <div class="tab-content no-padding">
+                         <!-- Morris chart - Sales -->
+                         <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;"></div>
+                       </div>
+                 </div><!-- /.nav-tabs-custom -->
+
+                  <!-- solid sales graph -->
+                 <div class="box box-solid bg-teal-gradient">
+                     <div class="box-header">
+                         <i class="fa fa-th"></i>
+                         <h3 class="box-title">Sales Graph</h3>
+                         <div class="box-tools pull-right">
+                             <button class="btn bg-teal btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                             <button class="btn bg-teal btn-sm" data-widget="remove"><i class="fa fa-times"></i></button>
+                         </div>
+                     </div>
+                     <div class="box-body border-radius-none">
+                         <div class="chart" id="line-chart" style="height: 250px;"></div>
+                     </div><!-- /.box-body -->
+                     <div class="box-footer no-border">
+                         <div class="row">
+                             <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
+                                 <input type="text" class="knob" data-readonly="true" value="20" data-width="60" data-height="60" data-fgColor="#39CCCC"/>
+                                 <div class="knob-label">Mail-Orders</div>
+                             </div><!-- ./col -->
+                             <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
+                                 <input type="text" class="knob" data-readonly="true" value="50" data-width="60" data-height="60" data-fgColor="#39CCCC"/>
+                                 <div class="knob-label">Online</div>
+                             </div><!-- ./col -->
+                             <div class="col-xs-4 text-center">
+                                 <input type="text" class="knob" data-readonly="true" value="30" data-width="60" data-height="60" data-fgColor="#39CCCC"/>
+                                 <div class="knob-label">In-Store</div>
+                             </div><!-- ./col -->
+                         </div><!-- /.row -->
+                     </div><!-- /.box-footer -->
+                 </div><!-- /.box -->
+
+             </section><!-- /.Left col -->
+             <!-- right col (We are only adding the ID to make the widgets sortable)-->
+             <section class="col-lg-5 connectedSortable">
+
+                <!-- Chat box -->
+                 <div class="box box-success">
+                     <div class="box-header">
+                         <i class="fa fa-list-ul"></i>
+                         <h3 class="box-title">Linha do tempo</h3>
+                         <div class="box-tools pull-right" data-toggle="tooltip" title="Status">
+                             <div class="btn-group" data-toggle="btn-toggle" >
+                                 <button type="button" class="btn btn-default btn-sm active"><i class="fa fa-square text-green"></i></button>
+                                 <button type="button" class="btn btn-default btn-sm"><i class="fa fa-square text-red"></i></button>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="box-body" id="chat-box">
+                        <ul class="timeline">
+                            <li>
+                                <div class="timeline-item">
+                                    <span class="time"><i class="fa fa-clock-o"></i> 5 mins ago</span>
+                                    <h3 class="timeline-header no-border"><a href="#">Sarah Young</a> accepted your friend request</h3>
+                                </div>
+                            </li>
+                        </ul>
+                     </div><!-- /.chat -->
+                 </div><!-- /.box (chat box) -->
+
+                 <!-- Map box -->
+                 <div class="box box-solid bg-light-blue-gradient">
+                     <div class="box-header">
+                         <!-- tools box -->
+                         <div class="pull-right box-tools">
+                             <button class="btn btn-primary btn-sm daterange pull-right" data-toggle="tooltip" title="Date range"><i class="fa fa-calendar"></i></button>
+                             <button class="btn btn-primary btn-sm pull-right" data-widget='collapse' data-toggle="tooltip" title="Collapse" style="margin-right: 5px;"><i class="fa fa-minus"></i></button>
+                         </div><!-- /. tools -->
+
+                         <i class="fa fa-map-marker"></i>
+                         <h3 class="box-title">
+                             Visitors
+                         </h3>
+                     </div>
+                     <div class="box-body">
+                         <div id="world-map" style="height: 250px;"></div>
+                     </div><!-- /.box-body-->
+                     <div class="box-footer no-border">
+                         <div class="row">
+                             <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
+                                 <div id="sparkline-1"></div>
+                                 <div class="knob-label">Visitors</div>
+                             </div><!-- ./col -->
+                             <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
+                                <div id="sparkline-2"></div>
+                                 <div class="knob-label">Online</div>
+                             </div><!-- ./col -->
+                             <div class="col-xs-4 text-center">
+                                 <div id="sparkline-3"></div>
+                                 <div class="knob-label">Exists</div>
+                             </div><!-- ./col -->
+                         </div><!-- /.row -->
+                     </div>
+                 </div>
+                 <!-- /.box -->
+
+            </section><!-- right col -->
+         </div><!-- /.row (main row) -->
+
+     </section><!-- /.content -->
+ </aside><!-- /.right-side -->
+
 {% endblock %}

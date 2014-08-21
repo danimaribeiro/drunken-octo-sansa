@@ -10,17 +10,13 @@ from flask.ext.httpauth import HTTPBasicAuth
 main = Blueprint('main', __name__)
 
 @main.route('/')
-#@cache.cached(timeout=1000)
 def home():
-    return render_template('empty.html')
+    return render_template('index.html')
 
 
-@main.route("/logout")
-def logout():
-    logout_user()
-    flash("You have been logged out.", "success")
-
-    return redirect(url_for(".home"))
+@main.route('/nfe')
+def view_nfe():
+    return render_template('view_nfe.html')
 
 
 @main.route("/restricted")

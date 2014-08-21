@@ -15,13 +15,9 @@
           vg.parse.spec(spec, function(chart) { chart({el:id}).update(); });
         }
         $(document).ready(function(){
-            $.post("{{ url_for('graficos.vendas') }}", {}, function(data){
+            $.post("{{ url_for('graficos.api_impostos') }}", {}, function(data){
                 data = jQuery.parseJSON(data);
                 parse(data, '#graph_2');
-            });
-            $.post("{{ url_for('graficos.mensal') }}", {}, function(data){
-                data = jQuery.parseJSON(data);
-                parse(data, '#graph');
             });
         });
 

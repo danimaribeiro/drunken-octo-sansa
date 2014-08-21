@@ -13,17 +13,30 @@ graphs = Blueprint('graficos', __name__,  url_prefix='/graficos')
 from app import mongo
 
 @graphs.route('/')
-def mapas():
-    return render_template('graficos/grafico.html')
+def index():
+    return render_template('graficos/index.html')
 
-@graphs.route('/vendas', methods=['GET', 'POST'])
+@graphs.route('/impostos')
+def impostos():
+    return render_template('graficos/impostos.html')
+
+@graphs.route('/vendas')
 def vendas():
+    return render_template('graficos/vendas.html')
+
+@graphs.route('/api_vendas', methods=['GET', 'POST'])
+def api_vendas():
     list_data = [10, 20, 30, 20, 15, 30, 45]
-    bar = vincent.Bar(list_data)
+    bar = vincent.Bar(list_data, width=580, height=260)
     return bar.to_json()
 
-@graphs.route('/mensal', methods=['GET', 'POST'])
-def mensal():
+@graphs.route('/api_vendas_dia', methods=['GET', 'POST'])
+def api_vendas_dia():
+    line = vincent.Line([10, 20, 30, 20, 15, 30, 45], width=440, height=230)
+    return line.to_json()
+
+@graphs.route('/api_impostos', methods=['GET', 'POST'])
+def api_impostos():
     import pandas as pd
 
     farm_1 = {'apples': 10, 'berries': 32, 'squash': 21, 'melons': 13, 'corn': 18}

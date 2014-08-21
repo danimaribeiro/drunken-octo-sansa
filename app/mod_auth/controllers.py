@@ -55,3 +55,7 @@ def recuperar():
     form = RegistroForm(request.form)
     return render_template("auth/recuperar.html", form=form)
 
+@mod_auth.route('/logout/')
+def logout():
+    logout_user()
+    return redirect(url_for('auth.login'))
