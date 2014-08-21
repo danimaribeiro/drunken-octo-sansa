@@ -6,7 +6,7 @@ Created on Aug 13, 2014
 '''
 from flask.ext.httpauth import HTTPBasicAuth
 from flask import Flask, jsonify, make_response, request
-from processa_nfe import processar_xml
+from app.serviceapi.processa_nfe import processar_xml
 #from rq import Queue
 #from redis import Redis
 

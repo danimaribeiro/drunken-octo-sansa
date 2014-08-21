@@ -21,3 +21,10 @@ def json_mapas():
         colecao.append(f)
     colecao = FeatureCollection(colecao)
     return dumps(colecao)
+
+    #{ $match : { "nfeProc.NFe.infNFe.dest.enderDest.cMun" : "4217501" } }
+    #{"$group":{
+    #        "_id": "$nfeProc.NFe.infNFe.dest.enderDest.cMun",
+    #        "total":{"$sum": "$nfeProc.NFe.infNFe.total.ICMSTot.vNF" }
+    #    }
+    #}

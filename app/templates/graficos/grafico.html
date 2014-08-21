@@ -1,0 +1,56 @@
+{% extends "empty.html" %}
+
+{% block css %}
+<style type="text/css">
+
+ </style>
+{% endblock %}
+
+{% block scripts %}
+    <script src="http://trifacta.github.io/vega/lib/d3.v3.min.js"></script>
+    <script src="http://trifacta.github.io/vega/vega.js"></script>
+
+  <script type="text/javascript">
+        function parse(spec, id) {
+          vg.parse.spec(spec, function(chart) { chart({el:id}).update(); });
+        }
+        $(document).ready(function(){
+            $.post("{{ url_for('graficos.vendas') }}", {}, function(data){
+                data = jQuery.parseJSON(data);
+                parse(data, '#graph_2');
+            });
+            $.post("{{ url_for('graficos.mensal') }}", {}, function(data){
+                data = jQuery.parseJSON(data);
+                parse(data, '#graph');
+            });
+        });
+
+
+
+  </script>
+
+{% endblock %}
+
+{% block body %}
+
+<!-- Right side column. Contains the navbar and content of the page -->
+<aside class="right-side">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Gráficos
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+            <li class="active">Gráficos</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div id="graph"></div>
+        <div id="graph_2"></div>
+    </section><!-- /.content -->
+</aside><!-- /.right-side -->
+
+{% endblock %}

@@ -32,8 +32,10 @@ def server_error(error):
 from app.mod_auth.controllers import mod_auth as auth_module
 from app.controllers.main import main
 from app.mapas.controllers import mapa
+from app.graficos.controllers import graphs
 
 # Register blueprint(s)
 app.register_blueprint(auth_module)
 app.register_blueprint(main)
 app.register_blueprint(mapa)
+app.register_blueprint(graphs)

@@ -2,7 +2,7 @@
 
 from flask.ext.httpauth import HTTPBasicAuth
 from flask import Flask, jsonify, make_response, request
-from processa_nfe import processar_xml
+from app.serviceapi.processa_nfe import processar_xml
 
 BROKER_URL = 'amqp://guest:guest@localhost:5672//'
 
@@ -10,7 +10,6 @@ app = Flask(__name__, instance_path=r'C:\Projetos\drunken-octo-sansa\\')
 auth = HTTPBasicAuth()
 
 @app.route('/envio_xml', methods = ['GET', 'POST'])
-#@auth.login_required
 def envio_xml():
     xml = request.data
     print(xml)
