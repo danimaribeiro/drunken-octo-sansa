@@ -2,7 +2,8 @@
 from flask import Flask, render_template
 from flask.ext.pymongo import PyMongo
 from flask.ext.login import LoginManager
-
+from flask.ext.assets import Environment
+from app.assets import common_js, common_css
 
 # Define the WSGI application object
 app = Flask(__name__)
@@ -10,6 +11,10 @@ app.config['metrics_DBNAME'] = 'metrics'
 mongo = PyMongo(app, config_prefix='metrics')
 login_manager = LoginManager()
 login_manager.init_app(app)
+
+assets = Environment(app)
+assets.register('js_all', common_js)
+assets.register('css_all', common_css)
 
 # Configurations
 app.config.from_object('config')

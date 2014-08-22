@@ -12,7 +12,24 @@
 
   <script type="text/javascript">
         function parse(spec, id) {
-          vg.parse.spec(spec, function(chart) { chart({el:id}).update(); });
+          vg.parse.spec(spec, function(chart) {
+              var view = chart({el:id})
+                .on("mouseover", function(event, item) {
+                  view.update({
+                    props: "hover",
+                    items: item.cousin(1)
+                  });
+                })
+                .on("mouseout", function(event, item) {
+                  view.update({
+                    props: "update",
+                    items: item.cousin(1),
+                    duration: 250,
+                    ease: "linear"
+                  });
+                })
+                .update();
+            });
         }
         $(document).ready(function(){
             $.post("{{ url_for('graficos.api_vendas') }}", {}, function(data){

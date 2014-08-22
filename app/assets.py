@@ -1,19 +1,17 @@
 from flask_assets import Bundle
 
 common_css = Bundle(
-    'css/vendor/bootstrap.min.css',
-    'css/vendor/helper.css',
-    'css/main.css',
+    'css/bootstrap.min.css',
+    'css/font-awesome.min.css',
+    'css/ionicons.min.css',
+    'css/AdminLTE.css',
     filters='cssmin',
-    output='public/css/common.css'
+    output='css/common.css'
 )
 
 common_js = Bundle(
-    'js/vendor/jquery.min.js',
-    'js/vendor/bootstrap.min.js',
-    Bundle(
-        'js/main.js',
-        filters='jsmin'
-    ),
-    output='public/js/common.js'
+    'js/bootstrap.min.js',
+    'js/AdminLTE/app.js',
+    filters='jsmin',
+    output='js/common.js'
 )
