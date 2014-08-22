@@ -39,7 +39,8 @@ def api_vendas_dia():
                 "_id": "$nfeProc.NFe.infNFe.ide.dEmi",
                 "total":{"$sum": "$nfeProc.NFe.infNFe.total.ICMSTot.vNF" }
             }},
-            {"$sort": {"_id": -1}}
+            {"$sort": {"_id": -1}},
+            {"$limit":20}
             ])
 
     resultado = resultado['result']
