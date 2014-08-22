@@ -32,7 +32,7 @@
             });
         }
         $(document).ready(function(){
-            $.post("{{ url_for('graficos.api_vendas') }}", {}, function(data){
+            $.post("{{ url_for('graficos.api_vendas_dia') }}", {}, function(data){
                 data = jQuery.parseJSON(data);
                 parse(data, '#graph');
             });

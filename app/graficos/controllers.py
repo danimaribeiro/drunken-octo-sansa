@@ -6,6 +6,7 @@ Created on 20/08/2014
 '''
 from flask import Blueprint, render_template, flash, request, redirect, url_for, jsonify
 from geojson import FeatureCollection, Feature, dumps
+from bson import SON
 import vincent
 
 graphs = Blueprint('graficos', __name__,  url_prefix='/graficos')
@@ -32,7 +33,20 @@ def api_vendas():
 
 @graphs.route('/api_vendas_dia', methods=['GET', 'POST'])
 def api_vendas_dia():
-    line = vincent.Line([10, 20, 30, 20, 15, 30, 45], width=440, height=230)
+    import pandas as pd
+    resultado = mongo.db.notas_fiscais.aggregate([
+            {"$group":{
+                "_id": "$nfeProc.NFe.infNFe.ide.dEmi",
+                "total":{"$sum": "$nfeProc.NFe.infNFe.total.ICMSTot.vNF" }
+            }},
+            {"$sort": {"_id": -1}}
+            ])
+
+    resultado = resultado['result']
+    resultado = pd.DataFrame.from_records(resultado, index="_id")
+    line = vincent.Line(resultado, width=540, height=380)
+    line.axis_titles(x='', y='Valor vendas')
+    line.y_axis_properties(label_align="right", title_offset=-40, title_size=14)
     return line.to_json()
 
 @graphs.route('/api_impostos', methods=['GET', 'POST'])
