@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
+encoding//app/__init__.py=utf-8
 encoding//app/controllers/main.py=utf-8
 encoding//app/graficos/controllers.py=utf-8
 encoding//app/mapas/controllers.py=utf-8

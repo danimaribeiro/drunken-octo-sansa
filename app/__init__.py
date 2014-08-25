@@ -1,3 +1,4 @@
+#coding=utf-8
 # Import flask and template operators
 from flask import Flask, render_template
 from flask.ext.pymongo import PyMongo
