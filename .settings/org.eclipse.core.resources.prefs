@@ -5,6 +5,7 @@ encoding//app/graficos/controllers.py=utf-8
 encoding//app/mapas/controllers.py=utf-8
 encoding//app/mod_auth/controllers.py=utf-8
 encoding//app/mod_auth/forms.py=utf-8
+encoding//app/models.py=utf-8
 encoding//app/serviceapi/controllers.py=utf-8
 encoding//app/templates/404.html=UTF-8
 encoding//app/templates/auth/recuperar.html=UTF-8
