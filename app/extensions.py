@@ -1,3 +1,4 @@
+#coding=utf-8
 from flask.ext.cache import Cache
 from flask.ext.debugtoolbar import DebugToolbarExtension
 from flask.ext.login import LoginManager

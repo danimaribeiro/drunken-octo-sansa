@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+#coding=utf-8
 from flask import Blueprint, render_template, flash, request, redirect, url_for
 from flask.ext.login import login_required
 from flask.ext.httpauth import HTTPBasicAuth
@@ -10,7 +10,6 @@ from flask.ext.httpauth import HTTPBasicAuth
 main = Blueprint('main', __name__)
 
 @main.route('/')
-@login_required
 def home():
     return render_template('index.html')
 
