@@ -1,35 +1,23 @@
-from flask.ext.sqlalchemy import SQLAlchemy
-from flask.ext.login import UserMixin, AnonymousUserMixin
+from flask.ext.login import UserMixin
 
-db = SQLAlchemy()
-
-
-class User(db.Model, UserMixin):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String)
-    password = db.Column(db.String)
-
-    def __init__(self, username, password):
-        self.username = username
-        self.password = password
+class User(UserMixin):
+    def __init__(self, iden, nome, email, senha):
+        self.id = iden
+        self.nome = nome
+        self.email = email
+        self.senha = senha
 
     def is_authenticated(self):
-        if isinstance(self, AnonymousUserMixin):
-            return False
-        else:
-            return True
+        return True
 
     def is_active(self):
         return True
 
     def is_anonymous(self):
-        if isinstance(self, AnonymousUserMixin):
-            return True
-        else:
-            return False
+        return False
 
     def get_id(self):
         return self.id
-    
+
     def __repr__(self):
-        return '<User %r>' % self.username
+        return '<Usuário %r>' % self.nome

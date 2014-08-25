@@ -10,6 +10,7 @@ from flask.ext.httpauth import HTTPBasicAuth
 main = Blueprint('main', __name__)
 
 @main.route('/')
+@login_required
 def home():
     return render_template('index.html')
 

@@ -4,6 +4,8 @@ from flask.ext.pymongo import PyMongo
 from flask.ext.login import LoginManager
 from flask.ext.assets import Environment
 from app.assets import common_js, common_css
+from app.models import User
+from bson.objectid import ObjectId
 
 # Define the WSGI application object
 app = Flask(__name__)
@@ -11,6 +13,8 @@ app.config['metrics_DBNAME'] = 'metrics'
 mongo = PyMongo(app, config_prefix='metrics')
 login_manager = LoginManager()
 login_manager.init_app(app)
+login_manager.login_view = "auth.login"
+login_manager.login_message = "Por favor faça login para ver a página"
 
 assets = Environment(app)
 assets.register('js_all', common_js)
@@ -21,7 +25,11 @@ app.config.from_object('config')
 
 @login_manager.user_loader
 def load_user(userid):
-    return mongo.db.users.find_one({ "_id": userid })
+    user = mongo.db.users.find_one({ "_id": ObjectId(userid) })
+    if user is None:
+        return None
+    usuario = User(str(user['_id']), user['nome'], user['email'], user['senha'])
+    return usuario
 
 # Sample HTTP error handling
 @app.errorhandler(404)

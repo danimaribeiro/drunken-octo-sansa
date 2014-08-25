@@ -4,9 +4,7 @@ Created on 20/08/2014
 
 @author: danimaribeiro
 '''
-from flask import Blueprint, render_template, flash, request, redirect, url_for, jsonify
-from geojson import FeatureCollection, Feature, dumps
-from bson import SON
+from flask import Blueprint, render_template
 import vincent
 
 graphs = Blueprint('graficos', __name__,  url_prefix='/graficos')

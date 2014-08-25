@@ -15,6 +15,7 @@ from werkzeug import check_password_hash, generate_password_hash
 # Import module forms
 from app.mod_auth.forms import LoginForm, RegistroForm
 from app import mongo
+from app.models import User
 
 # Define the blueprint: 'auth', set its url prefix: app.url/auth
 mod_auth = Blueprint('auth', __name__, url_prefix='/auth')
@@ -29,8 +30,8 @@ def login():
     if form.validate_on_submit():
         user = mongo.db.users.find_one({'email': form.email.data, 'senha': form.password.data})
         if user:
-            iden = user['_id']
-            login_user(str(iden))
+            usuario = User(str(user['_id']), user['nome'], user['email'], user['senha'])
+            login_user(usuario)
             flash('Welcome %s' % user['nome'])
             return redirect(url_for('main.home'))
 
