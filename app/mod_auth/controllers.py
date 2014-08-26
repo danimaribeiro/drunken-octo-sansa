@@ -35,7 +35,7 @@ def login():
             flash('Welcome %s' % user['nome'])
             return redirect(url_for('main.home'))
 
-        flash('Usuário ou senha inválidos', 'error-message')
+        flash(u'Usuário ou senha inválidos', 'error-message')
 
     return render_template("auth/login.html", form=form)
 
