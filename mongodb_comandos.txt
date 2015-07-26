@@ -1,0 +1,14 @@
+db.notas_fiscais.aggregate([{"$group":{"_id": "$nfeProc.NFe.infNFe.dest.CNPJ", 
+        "total":{"$sum": "$nfeProc.NFe.infNFe.total.ICMSTot.vNF" }}}])
+
+        
+db.notas_fiscais.find({}).forEach(function(doc) {    
+    var d = { _id : doc._id };
+    var s = { $set:{ "nfeProc.NFe.infNFe.total.ICMSTot.vNF" : doc.nfeProc.NFe.infNFe.total.ICMSTot.vNF} };
+    db.notas_fiscais.update(d, s);    
+    print(d._id);
+})
+
+
+        
+        
